@@ -1,0 +1,15 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+#format = """$character"""
+#right_format = """$all"""
+
+add_newline = false
+
+[docker_context]
+disabled = false
+
+[kubernetes]
+disabled = false
+
+[status]
+disabled = false
