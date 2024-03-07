@@ -67,6 +67,7 @@ symbol = "󱇶 "
 
 [git_branch]
 symbol = " "
+format = '[$symbol$branch(:$remote_branch)]($style) '
 
 [golang]
 symbol = " "
@@ -87,8 +88,9 @@ format = '[${symbol}helm ($version )]($style)'
 symbol = " "
 
 [hostname]
-ssh_symbol = " "
+ssh_symbol = ""
 ssh_only = false
+format = '[$ssh_symbol$hostname]($style):'
 
 [java]
 symbol = " "
@@ -204,7 +206,7 @@ symbol = " "
 symbol = " "
 
 [username]
-format = '[$user]($style) '
+format = '[$user]($style)@'
 show_always = true
 
 [zig]
