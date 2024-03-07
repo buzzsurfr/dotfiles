@@ -178,7 +178,7 @@ symbol = " "
 symbol = " "
 
 [username]
-format = '[$user]($style)@'
+format = '[$user]($style) '
 
 [zig]
 symbol = " "
