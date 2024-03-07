@@ -5,14 +5,6 @@
 
 add_newline = false
 
-[kubernetes]
-disabled = false
-symbol = "󱃾 "
-format = '[$symbol$context|$namespace]($style) '
-contexts = [
-    { context_pattern = "azeroth-ts", context_alias = "󱗼 azeroth"}
-]
-
 [status]
 disabled = false
 
@@ -80,6 +72,15 @@ symbol = " "
 
 [julia]
 symbol = " "
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+format = '[$symbol$context|$namespace]($style) '
+contexts = [
+    { context_pattern = "azeroth-ts", context_alias = " 󱗼 azeroth" },
+    { context_pattern = "azeroth", context_alias = " azeroth" }
+]
 
 [kotlin]
 symbol = " "
@@ -175,6 +176,9 @@ symbol = " "
 
 [swift]
 symbol = " "
+
+[username]
+format = '[$user]($style)@'
 
 [zig]
 symbol = " "
