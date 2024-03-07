@@ -2,8 +2,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 format = """
 $all\
-$username\
 $os\
+$username\
 $hostname\
 $directory\
 $git_branch\
