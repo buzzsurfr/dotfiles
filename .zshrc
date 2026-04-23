@@ -13,6 +13,23 @@ export PATH="$PATH:${HOME}/.krew/bin:${HOME}/go/bin:${HOME}/.local/bin"
 # dotfiles
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
+_dotfiles_update_check() {
+  local check_file="$HOME/.dotfiles-update-check"
+  local now=$(date +%s)
+  local last_check=0
+  [[ -f "$check_file" ]] && last_check=$(cat "$check_file")
+  if (( now - last_check > 86400 )); then
+    echo "$now" > "$check_file"
+    git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" fetch --quiet origin 2>/dev/null &!
+  fi
+  local behind
+  behind=$(git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-list HEAD..origin/main --count 2>/dev/null)
+  if [[ -n "$behind" && "$behind" -gt 0 ]]; then
+    echo "dotfiles: $behind update(s) available — run ~/.init/update.sh"
+  fi
+}
+_dotfiles_update_check
+
 # machine-specific overrides (not tracked)
 [[ -f "$HOME/.localrc" ]] && source "$HOME/.localrc"
 
