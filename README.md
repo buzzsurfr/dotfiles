@@ -5,7 +5,7 @@ Personal dotfiles managed with a [bare git repo](https://www.atlassian.com/git/t
 ## New machine setup
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/buzzsurfr/dotfiles/master/.init/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/buzzsurfr/dotfiles/main/.init/install.sh)
 ```
 
 This will:
