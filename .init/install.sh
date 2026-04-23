@@ -23,6 +23,7 @@ if ! config checkout 2>/dev/null; then
 fi
 
 config config status.showUntrackedFiles no
+config config push.autoSetupRemote true
 echo "    Dotfiles checked out."
 
 # --- homebrew ---
