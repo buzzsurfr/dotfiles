@@ -1,6 +1,5 @@
 tap "buildpacks/tap"
 tap "cdr/coder"
-tap "homebrew/bundle"
 tap "steipete/tap"
 brew "cryptography"
 brew "tree"
