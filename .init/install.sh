@@ -4,27 +4,32 @@ set -e
 DOTFILES_REPO="https://github.com/buzzsurfr/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
 
-# --- dotfiles ---
-echo "==> Cloning dotfiles..."
-git clone --bare "$DOTFILES_REPO" "$DOTFILES_DIR"
-
 function config {
   git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" "$@"
 }
 
-mkdir -p "$HOME/.dotfiles-backup"
+# --- dotfiles ---
+if [[ -d "$DOTFILES_DIR" ]]; then
+  echo "==> Dotfiles already installed, pulling latest..."
+  config pull
+else
+  echo "==> Cloning dotfiles..."
+  git clone --bare "$DOTFILES_REPO" "$DOTFILES_DIR"
 
-echo "==> Checking out dotfiles..."
-if ! config checkout 2>/dev/null; then
-  echo "    Backing up conflicting files to ~/.dotfiles-backup"
-  config checkout 2>&1 | grep -E "^\s+\." | awk '{print $1}' | \
-    xargs -I{} sh -c 'mkdir -p "$(dirname "$HOME/.dotfiles-backup/{}")" && mv "$HOME/{}" "$HOME/.dotfiles-backup/{}"'
-  config checkout
+  mkdir -p "$HOME/.dotfiles-backup"
+
+  echo "==> Checking out dotfiles..."
+  if ! config checkout 2>/dev/null; then
+    echo "    Backing up conflicting files to ~/.dotfiles-backup"
+    config checkout 2>&1 | grep -E "^\s+\." | awk '{print $1}' | \
+      xargs -I{} sh -c 'mkdir -p "$(dirname "$HOME/.dotfiles-backup/{}")" && mv "$HOME/{}" "$HOME/.dotfiles-backup/{}"'
+    config checkout
+  fi
+
+  config config status.showUntrackedFiles no
+  config config push.autoSetupRemote true
 fi
-
-config config status.showUntrackedFiles no
-config config push.autoSetupRemote true
-echo "    Dotfiles checked out."
+echo "    Dotfiles ready."
 
 # --- homebrew ---
 echo "==> Installing Homebrew..."
@@ -48,6 +53,12 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 else
   echo "    oh-my-zsh already installed."
 fi
+
+# --- iterm2 ---
+echo "==> Configuring iTerm2 preferences..."
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+echo "    iTerm2 will load prefs from ~/.config/iterm2"
 
 echo ""
 echo "All done! Open a new terminal to get started."
