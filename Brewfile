@@ -1,10 +1,6 @@
 tap "buildpacks/tap"
 tap "cdr/coder"
-tap "cue-lang/tap"
 tap "homebrew/bundle"
-tap "nats-io/nats-tools"
-tap "oven-sh/bun"
-tap "siderolabs/tap"
 tap "steipete/tap"
 brew "cryptography"
 brew "tree"
@@ -33,13 +29,9 @@ brew "helm"
 brew "hugo"
 brew "webp"
 brew "jq"
-brew "k3sup"
-brew "k9s"
-brew "kompose"
 brew "kubernetes-cli"
 brew "krew"
 brew "kubecm"
-brew "kubie"
 brew "kustomize"
 brew "libwebsockets"
 brew "llvm"
@@ -70,47 +62,25 @@ brew "rust"
 brew "starship"
 brew "stern"
 brew "terminal-notifier"
-brew "velero"
 brew "watch"
 brew "wget"
 brew "whosthere"
 brew "yamllint"
 brew "buildpacks/tap/pack"
 brew "cdr/coder/coder@1"
-brew "cue-lang/tap/cue"
-brew "nats-io/nats-tools/nats"
-brew "oven-sh/bun/bun"
-brew "siderolabs/tap/talosctl"
 brew "steipete/tap/imsg"
 cask "1password-cli"
 cask "claude-code"
-cask "flutter"
-cask "freeze"
-cask "macfuse"
 cask "rar"
 cask "warp"
-cask "wombat"
-cask "zed"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
-mas "CleverFiles Cleaner", id: 905264208
-mas "eDrawings", id: 1209754386
-mas "Grammarly for Safari", id: 1462114288
 mas "Hidden Bar", id: 1452453066
 mas "Home Assistant", id: 1099568401
-mas "iMovie", id: 408981434
-mas "keymapp", id: 6472865291
-mas "Keynote", id: 361285480
-mas "knitCompanion", id: 1058142783
 mas "Labelife", id: 1560922539
 mas "Magnet", id: 441258766
-mas "MIBBrowser", id: 523006753
-mas "Numbers", id: 361304891
-mas "Pages", id: 361309726
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 375589283
-mas "PayPal Honey", id: 1472777122
-mas "Pixelmator Pro", id: 6746662575
 mas "Slack", id: 803453959
 mas "Speedtest", id: 1153157709
 mas "Trello", id: 1278508951
@@ -119,18 +89,13 @@ mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "anthropic.claude-code"
-vscode "astro-build.astro-vscode"
-vscode "bradlc.vscode-tailwindcss"
 vscode "coder.coder-workspaces"
-vscode "dart-code.dart-code"
-vscode "dart-code.flutter"
 vscode "docker.docker"
 vscode "github.codespaces"
 vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "golang.go"
-vscode "ketho.wow-api"
 vscode "marlinfirmware.auto-build"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
@@ -149,19 +114,15 @@ vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.cpptools"
 vscode "ms-vscode.live-server"
 vscode "ms-vscode.remote-explorer"
-vscode "paulober.pico-w-go"
-vscode "platformio.platformio-ide"
 vscode "redhat.ansible"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 vscode "rust-lang.rust-analyzer"
 vscode "sumneko.lua"
-vscode "svelte.svelte-vscode"
 vscode "tamasfe.even-better-toml"
 vscode "vue.volar"
 vscode "zxh404.vscode-proto3"
 go "github.com/go-delve/delve/cmd/dlv"
-go "fyne.io/fyne/v2/cmd/fyne_demo"
 go "github.com/ramya-rao-a/go-outline"
 go "golang.org/x/tools/cmd/godoc"
 go "github.com/fatih/gomodifytags"
@@ -173,7 +134,6 @@ go "github.com/josharian/impl"
 go "google.golang.org/protobuf/cmd/protoc-gen-go"
 go "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
 go "honnef.co/go/tools/cmd/staticcheck"
-go "github.com/wailsapp/wails/v2/cmd/wails"
 krew "cert-manager"
 krew "ctx"
 krew "get-all"
