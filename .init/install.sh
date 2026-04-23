@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-DOTFILES_REPO="git@github.com:buzzsurfr/dotfiles.git"
+DOTFILES_REPO="https://github.com/buzzsurfr/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # --- dotfiles ---
@@ -52,3 +52,6 @@ fi
 echo ""
 echo "All done! Open a new terminal to get started."
 echo "Add machine-specific config to ~/.localrc (not tracked)."
+echo ""
+echo "To enable 'config push', authenticate with GitHub:"
+echo "  gh auth login"
