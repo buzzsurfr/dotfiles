@@ -75,6 +75,9 @@ else
   echo "    No machine.local.sh found — copy ~/.init/machine.sh.template to configure."
 fi
 
+# --- secrets ---
+"$HOME/.init/secrets.sh"
+
 echo ""
 echo "All done! Open a new terminal to get started."
 echo "Add machine-specific config to ~/.localrc (not tracked)."

@@ -30,5 +30,8 @@ if [[ -f "$local_config" ]]; then
   fi
 fi
 
+# --- secrets ---
+"$HOME/.init/secrets.sh"
+
 echo ""
 echo "Done! Restart your terminal if shell config changed."
