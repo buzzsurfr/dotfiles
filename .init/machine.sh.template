@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Copy this to ~/.init/machine.local.sh and fill in values for this machine.
+# machine.local.sh is NOT tracked in git.
+
+# iTerm2 window size
+ITERM_COLS=120
+ITERM_ROWS=30

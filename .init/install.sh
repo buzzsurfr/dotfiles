@@ -60,6 +60,21 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/it
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 echo "    iTerm2 will load prefs from ~/.config/iterm2"
 
+# --- machine-specific settings ---
+local_config="$HOME/.init/machine.local.sh"
+if [[ -f "$local_config" ]]; then
+  source "$local_config"
+  if [[ -n "$ITERM_COLS" && -n "$ITERM_ROWS" ]]; then
+    echo "==> Setting iTerm2 window size to ${ITERM_COLS}x${ITERM_ROWS}..."
+    plist="$HOME/.config/iterm2/com.googlecode.iterm2.plist"
+    /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Columns $ITERM_COLS" "$plist"
+    /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Rows $ITERM_ROWS" "$plist"
+    config update-index --skip-worktree .config/iterm2/com.googlecode.iterm2.plist
+  fi
+else
+  echo "    No machine.local.sh found — copy ~/.init/machine.sh.template to configure."
+fi
+
 echo ""
 echo "All done! Open a new terminal to get started."
 echo "Add machine-specific config to ~/.localrc (not tracked)."
