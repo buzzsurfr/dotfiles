@@ -23,6 +23,7 @@ disabled = false
 symbol = "󰸏 "
 style = "bold #ff9900"
 format = '[$symbol($profile)|($region) (\[$duration\])]($style) '
+force_display = true
 
 [azure]
 format = '[$symbol($subscription)]($style) '
