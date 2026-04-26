@@ -1,0 +1,47 @@
+{
+    "git.autofetch": true,
+    "go.useLanguageServer": true,
+    "workbench.colorTheme": "Dark+",
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "svelte.enable-ts-plugin": true,
+    "svelte.plugin.svelte.note-new-transformation": false,
+    "githubPullRequests.createOnPublishBranch": "never",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+    "editor.rulers": [
+    80
+    ],
+    "platformio-ide.activateOnlyOnPlatformIOProject": true,
+    "go.toolsManagement.autoUpdate": true,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "default"
+        },
+        {
+            "label": "Created Issues",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+        },
+        {
+            "label": "Recent Issues",
+            "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+        }
+    ],
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "github"
+    ],
+    "editor.fontFamily": "MesloLGS Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.accessibilitySupport": "off",
+    "update.showReleaseNotes": false,
+    "aws.cloudformation.telemetry.enabled": false,
+    "claudeCode.preferredLocation": "panel",
+    "docker.extension.enableComposeLanguageServer": false,
+    "task.allowAutomaticTasks": "on",
+    "claudeCode.selectedModel": "default",
+    "extensions.ignoreRecommendations": true
+}
