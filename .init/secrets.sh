@@ -7,7 +7,7 @@ if ! command -v op &>/dev/null; then
 fi
 
 if ! op whoami &>/dev/null 2>&1; then
-  echo "secrets: not signed in to 1Password — run 'op signin' then re-run ~/.init/secrets.sh"
+  echo "secrets: not authenticated with 1Password — unlock the 1Password app, then re-run ~/.init/secrets.sh"
   exit 0
 fi
 

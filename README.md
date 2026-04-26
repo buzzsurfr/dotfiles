@@ -13,8 +13,20 @@ This will:
 2. Check out config files into `$HOME`
 3. Install [Homebrew](https://brew.sh) and all packages in `Brewfile`
 4. Install [oh-my-zsh](https://ohmyz.sh)
+5. Pull secrets from 1Password (kubeconfig) — requires the 1Password app to be unlocked
 
 Then open a new terminal.
+
+### Manual steps (once per machine)
+
+**1Password SSH agent** — in the 1Password app: Settings → Developer → Use the SSH agent. Then import SSH keys as SSH Key items.
+
+**AWS CLI plugin** — wires `aws` to inject credentials from 1Password at runtime, no credentials file needed:
+```sh
+op plugin init aws
+# Select: AWS Access Key - buzzsurfr (Private)
+# Set as global default
+```
 
 ## Managing dotfiles
 
@@ -35,6 +47,10 @@ config push
 | `.zprofile` | Login shell (Homebrew PATH) |
 | `.gitconfig` | Git identity and credential helper |
 | `.config/starship.toml` | Starship prompt |
+| `.config/op/plugins.sh` | 1Password CLI plugin aliases (`aws` → `op plugin run`) |
+| `.config/op/plugins/aws.json` | 1Password AWS plugin config (references item by ID, no secrets) |
+| `.aws/config` | AWS CLI region and output defaults |
+| `.aws/credentials.template` | Credentials setup instructions (actual credentials via op plugin) |
 | `Brewfile` | All Homebrew packages and casks |
 
 ## Local overrides
