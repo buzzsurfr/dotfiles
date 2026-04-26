@@ -30,6 +30,9 @@ _dotfiles_update_check() {
 }
 _dotfiles_update_check
 
+# 1Password CLI plugins
+[[ -f "$HOME/.config/op/plugins.sh" ]] && source "$HOME/.config/op/plugins.sh"
+
 # machine-specific overrides (not tracked)
 [[ -f "$HOME/.localrc" ]] && source "$HOME/.localrc"
 

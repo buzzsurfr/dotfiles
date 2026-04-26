@@ -1,1 +1,5 @@
 .init/machine.local.sh
+.aws/credentials
+.config/op/config
+.config/op/op-daemon.sock
+.config/op/plugins/used_items
