@@ -3,6 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 DISABLE_AUTO_UPDATE="true"
 plugins=(git 1password aws kubectl bgnotify)
 source $ZSH/oh-my-zsh.sh
+bindkey -v
 
 # environment
 export AWS_PROFILE=personal
