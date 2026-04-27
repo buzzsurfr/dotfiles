@@ -8,8 +8,9 @@ function config {
 }
 
 echo "==> Pulling latest dotfiles..."
-# lift skip-worktree so pull can update the shared plist
+# lift skip-worktree so pull can update tracked defaults
 config update-index --no-skip-worktree .config/iterm2/com.googlecode.iterm2.plist 2>/dev/null || true
+config update-index --no-skip-worktree .config/starship.toml 2>/dev/null || true
 config pull
 
 echo "==> Syncing Homebrew packages..."
@@ -27,6 +28,10 @@ if [[ -f "$local_config" ]]; then
     /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Columns $ITERM_COLS" "$plist"
     /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Rows $ITERM_ROWS" "$plist"
     config update-index --skip-worktree .config/iterm2/com.googlecode.iterm2.plist
+  fi
+  if [[ "$STARSHIP_AWS_FORCE_DISPLAY" == "true" ]]; then
+    sed -i '' 's/^force_display = .*/force_display = true/' "$HOME/.config/starship.toml"
+    config update-index --skip-worktree .config/starship.toml
   fi
 fi
 

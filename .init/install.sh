@@ -71,6 +71,11 @@ if [[ -f "$local_config" ]]; then
     /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Rows $ITERM_ROWS" "$plist"
     config update-index --skip-worktree .config/iterm2/com.googlecode.iterm2.plist
   fi
+  if [[ "$STARSHIP_AWS_FORCE_DISPLAY" == "true" ]]; then
+    echo "==> Enabling Starship AWS force_display..."
+    sed -i '' 's/^force_display = .*/force_display = true/' "$HOME/.config/starship.toml"
+    config update-index --skip-worktree .config/starship.toml
+  fi
 else
   echo "    No machine.local.sh found — copy ~/.init/machine.sh.template to configure."
 fi

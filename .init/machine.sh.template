@@ -5,3 +5,6 @@
 # iTerm2 window size
 ITERM_COLS=120
 ITERM_ROWS=30
+
+# Starship AWS plugin: set to true to always show the AWS segment
+STARSHIP_AWS_FORCE_DISPLAY=false
