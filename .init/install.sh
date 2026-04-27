@@ -41,10 +41,16 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -f /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-echo "==> Installing packages from Brewfile..."
-brew bundle --file="$HOME/Brewfile"
+if command -v brew &>/dev/null; then
+  echo "==> Installing packages from Brewfile..."
+  brew bundle --file="$HOME/Brewfile"
+else
+  echo "    Homebrew not available — skipping Brewfile install."
+fi
 
 # --- oh-my-zsh ---
 echo "==> Installing oh-my-zsh..."

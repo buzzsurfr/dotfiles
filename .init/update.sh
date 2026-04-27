@@ -14,7 +14,11 @@ config update-index --no-skip-worktree .config/starship.toml 2>/dev/null || true
 config pull
 
 echo "==> Syncing Homebrew packages..."
-brew bundle --file="$HOME/Brewfile"
+if command -v brew &>/dev/null; then
+  brew bundle --file="$HOME/Brewfile"
+else
+  echo "    Homebrew not available — skipping."
+fi
 
 echo "==> Updating oh-my-zsh..."
 "$HOME/.oh-my-zsh/tools/upgrade.sh" 2>/dev/null || true
