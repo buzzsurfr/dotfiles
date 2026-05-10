@@ -1,0 +1,9 @@
+[default]
+cli_pager = 
+region    = us-east-1
+output    = json
+
+[profile personal]
+region    = us-east-1
+output    = json
+cli_pager = 

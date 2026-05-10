@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -e
+
+echo "==> Configuring iTerm2..."
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+plist="$HOME/.config/iterm2/com.googlecode.iterm2.plist"
+if [[ -f "$plist" ]]; then
+  /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Columns {{ .iterm_cols }}" "$plist"
+  /usr/libexec/PlistBuddy -c "Set :New\ Bookmarks:0:Rows {{ .iterm_rows }}" "$plist"
+  echo "    iTerm2 window size set to {{ .iterm_cols }}x{{ .iterm_rows }}"
+fi
+{{ end -}}

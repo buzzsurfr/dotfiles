@@ -1,0 +1,25 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -e
+
+if ! command -v npm &>/dev/null; then
+  echo "==> npm not found — skipping npm globals."
+  exit 0
+fi
+
+echo "==> Installing global npm packages..."
+npm install -g @n8n/cli
+
+echo "==> Installing ddb-mcp..."
+if [[ ! -d "$HOME/ddb-mcp" ]]; then
+  git clone https://github.com/ddb-mcp/ddb-mcp.git "$HOME/ddb-mcp"
+else
+  git -C "$HOME/ddb-mcp" pull
+fi
+npm --prefix "$HOME/ddb-mcp" install
+npm --prefix "$HOME/ddb-mcp" run build
+npm install -g "$HOME/ddb-mcp"
+
+echo "==> Installing Playwright Chromium..."
+npx playwright install chromium
+{{ end -}}

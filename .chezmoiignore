@@ -1,0 +1,15 @@
+# Machine-local files — never tracked
+.localrc
+.aws/credentials
+.config/op/config
+.config/op/op-daemon.sock
+.config/op/plugins/used_items
+.dotfiles-backup
+.dotfiles-update-check
+.chezmoi-update-check
+
+# macOS-only paths — ignored on non-darwin machines
+{{- if ne .chezmoi.os "darwin" }}
+Library
+.config/iterm2
+{{- end }}

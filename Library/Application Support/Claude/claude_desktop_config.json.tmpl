@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "dndbeyond": {
+      "command": "node",
+      "args": [
+        "/opt/homebrew/lib/node_modules/ddb-mcp/dist/index.js"
+      ]
+    },
+    "trello": {
+      "command": "bunx",
+      "args": [
+        "@delorenj/mcp-server-trello"
+      ],
+      "env": {
+        "TRELLO_API_KEY": "{{ onepasswordRead "op://Private/Trello MCP/api key" }}",
+        "TRELLO_TOKEN": "{{ onepasswordRead "op://Private/Trello MCP/token" }}"
+      }
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Private/GitHub MCP PAT/token" }}"
+      }
+    },
+    "kubernetes": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "mcp-server-kubernetes"
+      ]
+    },
+    "aws": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "AWS_REGION=us-east-1"
+      ]
+    }
+  },
+  "preferences": {
+    "dispatchCodeTasksPermissionMode": "plan",
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "chat",
+    "coworkWebSearchEnabled": true,
+    "keepAwakeEnabled": true,
+    "coworkOnboardingResumeStep": null,
+    "chicagoEnabled": true,
+    "epitaxyPrefs": {
+      "starred-local-code-sessions": [],
+      "starred-cowork-spaces": [],
+      "starred-session-groups": [],
+      "dframe-local-slice": {
+        "pinnedOrder": [],
+        "customGroupAssignments": {},
+        "customGroupOrder": {}
+      }
+    }
+  }
+}

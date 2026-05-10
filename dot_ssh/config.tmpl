@@ -1,0 +1,29 @@
+CanonicalizeHostname yes
+CanonicalDomains salvo.services tail5017c.ts.net
+CanonicalizeMaxDots 0
+
+# shared settings for all home lab hosts (FQDNs + Tailscale)
+Host *.salvo.services *.tail5017c.ts.net
+	User theo
+	StrictHostKeyChecking accept-new
+
+Host github.com
+	User git
+
+Host workshopswitch
+	HostName 192.168.24.10
+	User admin
+	HostKeyAlgorithms +ssh-rsa
+
+Host router 192.168.24.1
+	HostKeyAlgorithms +ssh-rsa
+
+Host bluefin
+	User salvot
+
+Host *
+{{ if eq .chezmoi.os "darwin" -}}
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{ else if eq .chezmoi.os "linux" -}}
+	IdentityAgent "~/.1password/agent.sock"
+{{ end -}}

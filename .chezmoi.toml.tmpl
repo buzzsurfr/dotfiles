@@ -1,0 +1,8 @@
+{{- $itermCols := promptIntOnce . "iterm_cols" "iTerm2 columns" 220 -}}
+{{- $itermRows := promptIntOnce . "iterm_rows" "iTerm2 rows" 50 -}}
+{{- $awsForceDisplay := promptBoolOnce . "starship_aws_force_display" "Always show AWS segment in Starship" false -}}
+
+[data]
+    iterm_cols = {{ $itermCols }}
+    iterm_rows = {{ $itermRows }}
+    starship_aws_force_display = {{ $awsForceDisplay }}
