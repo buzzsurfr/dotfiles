@@ -39,7 +39,12 @@ _chezmoi_update_check
 alias n8n='n8n-cli';
 
 notes() {
-  git -C ~/Code/notes "$@"
+  local notes_dir="$HOME/Code/notes"
+  if [[ "$1" == "sync" ]]; then
+    git -C "$notes_dir" pull --rebase && git -C "$notes_dir" add . && git -C "$notes_dir" commit -m "sync $(date +%Y-%m-%d)" && git -C "$notes_dir" push
+  else
+    git -C "$notes_dir" "$@"
+  fi
 }
 
 merge_json() {
