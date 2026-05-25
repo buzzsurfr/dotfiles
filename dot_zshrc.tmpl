@@ -36,7 +36,11 @@ _chezmoi_update_check
 [[ -f "$HOME/.localrc" ]] && source "$HOME/.localrc"
 
 # functions
-alias n8n='n8n-cli'
+alias n8n='n8n-cli';
+
+notes() {
+  git -C ~/Code/notes "$@"
+}
 
 merge_json() {
   local target="$1"
